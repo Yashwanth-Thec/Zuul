@@ -2,6 +2,9 @@
 #include <vector>
 #include <cstring>
 
+#include "Item.h"
+#include "Room.h"
+
 using namespace std;
 
 int main() {
@@ -23,14 +26,14 @@ int main() {
   Room* gym = new Room("You are where every rep write a new chapter of who you become.");
 
   //Items
-  Item* computer = new item("This contains all that there is to know abot whatever it that you want to know.");
-  Item* robot = new item("This is the future built by man-kind leading to the destruction of man-kind");
-  Item* popcorn = new item("With every pop the room echos the sound of delight and makes your taste buds rethink divinty.");
-  Item* book = new item("Contians not only the knowledge of the universe but also the crying echo of every last tress cut to construct it.");
-  Item* gun = new item("The power to save your life and take anothers both in one");
-  Item* speaker = new item("Intricet design epmloying various physics findings to produce sound heard no only to you but everyone around you");
-  Item* Alien = new item("What many hope to find in the vast ocean of the universe but also what many fear for it unknown powers.");
-  Item* drugs = new item("Upon consumption reatlity fails to feel real, this is what runs the underworld.");
+  Item* computer = new item("computer","This contains all that there is to know abot whatever it that you want to know.");
+  Item* robot = new item("robot","This is the future built by man-kind leading to the destruction of man-kind");
+  Item* popcorn = new item("popcorn","With every pop the room echos the sound of delight and makes your taste buds rethink divinty.");
+  Item* book = new item("book","Contians not only the knowledge of the universe but also the crying echo of every last tress cut to construct it.");
+  Item* gun = new item("gun","The power to save your life and take anothers both in one");
+  Item* speaker = new item("speaker","Intricet design epmloying various physics findings to produce sound heard no only to you but everyone around you");
+  Item* alien = new item("alien","What many hope to find in the vast ocean of the universe but also what many fear for it unknown powers.");
+  Item* drugs = new item("drugs","Upon consumption reatlity fails to feel real, this is what runs the underworld.");
 
 
   //setting all the exits
@@ -79,10 +82,44 @@ int main() {
 
   gym->setExit("west", cemetary);
 
-//initializing the rooms
-Room* currentRoom = outside;
-vector<Item*> inventory;
-bool playing(true);
 
+  //Setting Items
+  lab->setItem(computer);
+  onetwenty->setItem(robot);
+  theater->setItem(popcorn);
+  school->setItem(book);
+  gunShop->setItem(gun);
+  bestBuy->setItem(speaker);
+  area51->setItem(alien);
+  gym->setItem(drugs);
+	       
+  //initializing the rooms
+  Room* currentRoom = outside;
+  vector<Item*> inventory;
+  bool playing(true);
 
+  //print help
+  void printHelp(){
+    cout << endl;
+    cout << "go" << endl;
+    cout << "quit" << endl;
+    cout << "help" << endl;
+    cout << "inventory" << endl;
+    cout << "get" << endl;
+    cout << "drop" << endl;
+
+  }
+  void toLower(char* s){
+    for(int i = 0; s[i] != '\0'; ++i) {
+        s[i] = tolower(static_cast<unsigned char>(s[i]));
+  }
+  }
+  void printRoom(Room* room) {
+    cout << endl;
+    cout << "You are " << room->getDescription() << "." << endl;
+
+  
+    
+
+    
 }
